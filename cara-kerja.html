@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cara kerja Cek Pesan</title>
+<meta name="description" content="Bagaimana Cek Pesan menilai pesan mencurigakan, cara membaca skor, dan batasannya.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Cara kerja Cek Pesan">
+<meta property="og:description" content="Bagaimana Cek Pesan menilai pesan mencurigakan, cara membaca skor, dan batasannya.">
+<meta name="theme-color" content="#14213D">
+<link rel="icon" href="ikon.svg" type="image/svg+xml">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<nav class="top" aria-label="Menu utama"><a class="brand" href="index.html">Cek Pesan</a><a href="index.html">Periksa pesan</a><a href="modus.html">Modus penipuan</a><a href="cara-kerja.html" aria-current="page">Cara kerja</a><a href="privasi.html">Privasi</a><a href="lapor.html">Lapor</a></nav>
+<main class="page">
+<h1>Cara kerja Cek Pesan</h1>
+<p class="lead">Cek Pesan mencocokkan isi pesan dengan daftar pola penipuan yang sering dilaporkan, lalu menjumlahkan bobotnya menjadi skor kecurigaan dari 0 sampai 100.</p>
+<section><h2>Yang diperiksa</h2><ul>
+<li>Kata dan frasa khas modus, seperti permintaan OTP, hadiah undian, atau tekanan waktu.</li>
+<li>Tautan: alamat yang disingkat dan akhiran situs yang sering dipakai penipu.</li>
+<li>File APK dan ajakan memasang aplikasi dari chat.</li>
+<li>Nomor telepon dan nomor rekening yang ada di dalam pesan.</li>
+<li>Huruf yang disamarkan, misalnya angka pengganti huruf atau huruf dari alfabet lain.</li></ul></section>
+<section><h2>Cara membaca skor</h2><ul>
+<li>0: tidak ada pola yang dikenali. Ini bukan jaminan aman.</li>
+<li>1 sampai 19: ada sedikit tanda yang perlu diperhatikan.</li>
+<li>20 sampai 49: ada tanda penipuan, jangan klik dulu.</li>
+<li>50 ke atas: sangat mencurigakan, kemungkinan besar penipuan.</li></ul></section>
+<section><h2>Yang belum bisa dilakukan</h2><p>Cek Pesan tidak membuka tautan, tidak memeriksa reputasi nomor, dan tidak memahami konteks percakapan. Penipuan dengan kalimat baru bisa lolos, dan pesan sah yang kebetulan memuat kata seperti bank atau paket bisa mendapat skor kecil.</p></section>
+<section><h2>Dari mana polanya</h2><p>Pola disusun dari laporan OJK dan Indonesia Anti-Scam Centre periode 2024 hingga 2025. Daftar lengkapnya ada di halaman <a href="modus.html">Modus penipuan</a>, dan ditulis dalam satu file <code>pola.json</code> sehingga mudah diperbarui.</p></section>
+<footer>Cek Pesan mencocokkan pola umum, jadi bukan jaminan. Kalau ragu, tanyakan langsung ke pihak yang bersangkutan lewat kontak resminya.</footer>
+</main>
+
+</body>
+</html>

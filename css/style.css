@@ -1,0 +1,48 @@
+:root{--bg:#EEF2F7;--surface:#FFFFFF;--ink:#14213D;--muted:#51607A;--line:#CBD5E4;--ok:#17745A;--warn:#A86A00;--bad:#C0283A;--okbg:#DDF3EA;--warnbg:#FFF0CF;--badbg:#FBDDE0;--mark:#FFE08A;--btn:#14213D;--btntx:#FFFFFF;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1624;--surface:#18223A;--ink:#E8EEF8;--muted:#9AA9C4;--line:#2B3A5A;--ok:#5FD3A6;--warn:#F0B84A;--bad:#FF7B8A;--okbg:#12362B;--warnbg:#3A2C0C;--badbg:#44161D;--mark:#6B5200;--btn:#E8EEF8;--btntx:#0F1624;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0F1624;--surface:#18223A;--ink:#E8EEF8;--muted:#9AA9C4;--line:#2B3A5A;--ok:#5FD3A6;--warn:#F0B84A;--bad:#FF7B8A;--okbg:#12362B;--warnbg:#3A2C0C;--badbg:#44161D;--mark:#6B5200;--btn:#E8EEF8;--btntx:#0F1624;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Figtree",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.6;font-size:17px}
+main{max-width:720px;margin:0 auto;padding:40px 20px 56px}
+h1{font-family:"Bricolage Grotesque","Figtree",system-ui,sans-serif;font-weight:800;font-size:clamp(34px,7vw,52px);line-height:1.05;letter-spacing:-.02em;margin:0 0 14px}
+h2{font-family:"Bricolage Grotesque","Figtree",system-ui,sans-serif;font-size:21px;margin:30px 0 10px}
+.lead{color:var(--muted);margin:0 0 24px;max-width:56ch}
+textarea{width:100%;min-height:170px;resize:vertical;padding:16px;border:2px solid var(--line);border-radius:14px;background:var(--surface);color:var(--ink);font:inherit;font-size:16px}
+textarea:focus-visible,button:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px}
+button{font:inherit;font-weight:700;cursor:pointer;border-radius:12px;border:2px solid var(--ink);padding:11px 20px}
+.primary{background:var(--btn);color:var(--btntx);border-color:var(--btn)}
+.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.ex{font-weight:500;font-size:15px;padding:7px 13px;border-radius:999px}
+.hint{color:var(--muted);font-size:15px;margin:18px 0 0}
+#out{margin-top:28px}
+.verdict{border-radius:16px;padding:22px;border:2px solid}
+.verdict.bad{background:var(--badbg);border-color:var(--bad)}
+.verdict.warn{background:var(--warnbg);border-color:var(--warn)}
+.verdict.ok{background:var(--okbg);border-color:var(--ok)}
+.verdict h2{margin:0 0 6px;font-size:26px;line-height:1.2}
+.verdict.bad h2{color:var(--bad)}.verdict.warn h2{color:var(--warn)}.verdict.ok h2{color:var(--ok)}
+.verdict p{margin:0}
+.meter{height:12px;border-radius:99px;background:var(--surface);margin:16px 0 6px;overflow:hidden;border:1px solid var(--line)}
+.meter span{display:block;height:100%;border-radius:99px;background:currentColor}
+.verdict.bad .meter{color:var(--bad)}.verdict.warn .meter{color:var(--warn)}.verdict.ok .meter{color:var(--ok)}
+@media (prefers-reduced-motion:no-preference){.meter span{transition:width .6s ease}}
+.small{font-size:15px;color:var(--muted)}
+.msg{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;white-space:pre-wrap;word-break:break-word}
+mark{background:var(--mark);color:inherit;border-radius:4px;padding:1px 2px}
+ul{padding-left:20px;margin:0}
+li{margin:0 0 12px}
+.reasons li{list-style:none;margin-left:-20px;padding:14px 16px;background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--bad);border-radius:10px}
+.reasons b{display:block}
+.links code{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:2px 7px;word-break:break-all;font-size:15px}
+a{color:var(--ink);font-weight:700;text-underline-offset:3px}
+footer{margin-top:40px;color:var(--muted);font-size:14px;border-top:1px solid var(--line);padding-top:16px}
+
+.top{max-width:720px;margin:0 auto;padding:16px 20px 0;display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center}
+.top a{text-decoration:none;font-weight:500;font-size:15px}
+.top .brand{font-family:"Bricolage Grotesque","Figtree",system-ui,sans-serif;font-weight:800;font-size:20px;margin-right:auto}
+.top a[aria-current]{text-decoration:underline;text-underline-offset:6px;font-weight:700}
+.page p,.page li{max-width:62ch}
+.page h1{margin-top:8px}

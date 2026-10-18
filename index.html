@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cek Pesan: pengecek pesan penipuan berbahasa Indonesia</title>
+<meta name="description" content="Tempel pesan WhatsApp, SMS, atau email yang mencurigakan. Cek Pesan menandai pola penipuan dan menjelaskan alasannya, langsung di browser.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Cek Pesan: pengecek pesan penipuan berbahasa Indonesia">
+<meta property="og:description" content="Tempel pesan WhatsApp, SMS, atau email yang mencurigakan. Cek Pesan menandai pola penipuan dan menjelaskan alasannya, langsung di browser.">
+<meta name="theme-color" content="#14213D">
+<link rel="icon" href="ikon.svg" type="image/svg+xml">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<nav class="top" aria-label="Menu utama"><a class="brand" href="index.html">Cek Pesan</a><a href="index.html" aria-current="page">Periksa pesan</a><a href="modus.html">Modus penipuan</a><a href="cara-kerja.html">Cara kerja</a><a href="privasi.html">Privasi</a><a href="lapor.html">Lapor</a></nav>
+<main class="">
+
+<h1>Pesan ini aman nggak?</h1>
+<p class="lead">Tempel pesan WhatsApp, SMS, atau email yang bikin ragu. Cek Pesan menandai bagian yang mirip pola penipuan dan menjelaskan alasannya. Pesanmu diproses di browser ini saja, tidak dikirim ke mana pun.</p>
+
+<label for="in" style="font-weight:700;display:block;margin-bottom:8px">Isi pesan</label>
+<textarea id="in" placeholder="Tempel pesan di sini"></textarea>
+<div class="row">
+  <button class="primary" id="go">Periksa pesan</button>
+  <button class="ghost" id="clr">Hapus</button>
+</div>
+<p class="hint">Belum punya pesan? Coba contoh:</p>
+<div class="row" style="margin-top:8px">
+  <button class="ghost ex" data-ex="0">Paket gagal kirim</button>
+  <button class="ghost ex" data-ex="1">Undangan APK</button>
+  <button class="ghost ex" data-ex="2">Hadiah undian</button>
+  <button class="ghost ex" data-ex="3">Ganti nomor</button>
+  <button class="ghost ex" data-ex="4">Huruf disamarkan</button>
+</div>
+
+<section id="out" aria-live="polite"></section>
+
+<footer>Pola disusun dari laporan OJK dan Indonesia Anti-Scam Centre periode 2024 hingga 2025. Alat ini mencocokkan pola umum, jadi bukan jaminan. Pesan yang lolos pemeriksaan belum tentu aman, dan pesan yang terdeteksi belum tentu penipuan. Kalau ragu, tanyakan langsung ke pihak yang bersangkutan lewat kontak resminya.</footer>
+
+</main>
+<script src="js/app.js"></script>
+</body>
+</html>

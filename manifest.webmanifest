@@ -1,0 +1,16 @@
+{
+ "name": "Cek Pesan",
+ "short_name": "Cek Pesan",
+ "start_url": "index.html",
+ "display": "standalone",
+ "background_color": "#EEF2F7",
+ "theme_color": "#14213D",
+ "lang": "id",
+ "icons": [
+  {
+   "src": "ikon.svg",
+   "sizes": "any",
+   "type": "image/svg+xml"
+  }
+ ]
+}

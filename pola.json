@@ -1,0 +1,150 @@
+{
+ "diperbarui": "2026-10-19",
+ "sumber": "Laporan OJK dan Indonesia Anti-Scam Centre, 2024 hingga 2025",
+ "aturan": [
+  {
+   "k": "apk",
+   "w": 40,
+   "t": "Meminta kamu memasang file APK",
+   "y": "File APK dari chat bisa berisi aplikasi pencuri data atau pembobol m-banking. Undangan, resi, dan tagihan yang sah tidak pernah berbentuk APK.",
+   "a": "Jangan buka atau pasang file APK. Kalau sudah terlanjur, matikan data dan Wi-Fi, hapus aplikasinya, lalu hubungi bank.",
+   "pola": "\\b\\S*\\.apk\\b|\\bapk\\b|\\binstal(?:l)?\\s+(?:aplikasi|app)\\b",
+   "flags": "gi"
+  },
+  {
+   "k": "otp",
+   "w": 40,
+   "t": "Meminta OTP, PIN, atau kata sandi",
+   "y": "Bank, e-wallet, dan marketplace tidak pernah meminta kode ini lewat pesan. Siapa pun yang memintanya sedang mencoba masuk ke akunmu.",
+   "a": "Jangan pernah membagikan OTP, PIN, atau kata sandi ke siapa pun, termasuk yang mengaku petugas.",
+   "pola": "\\b(?:otp|pin|cvv|cvc|password|kata\\s*sandi|kode\\s+(?:verifikasi|rahasia|otp))\\b",
+   "flags": "gi"
+  },
+  {
+   "k": "short",
+   "w": 25,
+   "t": "Memakai tautan yang disingkat",
+   "y": "Tautan pendek menyembunyikan alamat tujuan sebenarnya, sehingga kamu tidak bisa menilai situsnya sebelum mengklik.",
+   "a": "Jangan klik. Buka situs atau aplikasi resminya dengan mengetik alamatnya sendiri.",
+   "pola": "\\b(?:bit\\.ly|tinyurl\\.com|s\\.id|cutt\\.ly|t\\.ly|rb\\.gy|shorturl\\.at|is\\.gd|ow\\.ly)\\S*",
+   "flags": "gi"
+  },
+  {
+   "k": "tld",
+   "w": 20,
+   "t": "Alamat situs berakhiran yang sering dipakai penipu",
+   "y": "Akhiran seperti .xyz, .top, atau .click murah dan sering dipakai untuk situs tiruan yang dibuat sekali pakai.",
+   "a": "Abaikan tautannya. Situs resmi kurir dan bank hampir selalu memakai .com, .co.id, atau .id.",
+   "pola": "\\b[a-z0-9-]+(?:\\.[a-z0-9-]+)*\\.(?:xyz|top|click|icu|site|online|cc|vip|buzz|cfd|sbs|monster)\\b\\S*",
+   "flags": "gi"
+  },
+  {
+   "k": "gift",
+   "w": 25,
+   "t": "Menjanjikan hadiah atau undian",
+   "y": "Kamu tidak mungkin menang undian yang tidak pernah kamu ikuti. Hadiah palsu dipakai sebagai umpan supaya kamu mengklik atau menyerahkan data.",
+   "a": "Anggap hadiah itu tidak ada. Undian yang sah tidak meminta kode atau biaya di awal.",
+   "pola": "\\b(?:selamat\\s+anda|anda\\s+(?:menang|terpilih)|terpilih|pemenang|undian|hadiah|giveaway|doorprize|klaim)\\b",
+   "flags": "gi"
+  },
+  {
+   "k": "pkg",
+   "w": 15,
+   "t": "Mengatasnamakan paket atau kurir",
+   "y": "Modus paket palsu sangat umum. Kurir asli tidak meminta konfirmasi lewat tautan asing atau file yang harus dipasang.",
+   "a": "Cek resi lewat aplikasi marketplace atau situs resmi kurir, bukan lewat tautan di pesan.",
+   "pola": "\\b(?:paket|resi|kurir|jne|jnt|sicepat|anteraja|pos\\s+indonesia|alamat\\s+(?:tidak\\s+)?(?:lengkap|jelas|salah)|gagal\\s+(?:dikirim|kirim|antar))\\b",
+   "flags": "gi"
+  },
+  {
+   "k": "urg",
+   "w": 15,
+   "t": "Menekan supaya kamu buru-buru",
+   "y": "Penipu membuat kamu panik atau terburu-buru supaya tidak sempat berpikir atau bertanya ke orang lain.",
+   "a": "Tarik napas dulu. Pesan yang sah memberi waktu, dan kamu boleh memverifikasi lebih dulu.",
+   "pola": "\\b(?:segera|sekarang\\s+juga|dalam\\s+\\d+\\s*(?:jam|menit|hari)|24\\s*jam|diblokir|dibekukan|ditutup|dinonaktifkan|batas\\s+waktu|kadaluarsa|kedaluwarsa|hari\\s+ini\\s+saja|jika\\s+tidak)\\b",
+   "flags": "gi"
+  },
+  {
+   "k": "org",
+   "w": 10,
+   "t": "Mengatasnamakan lembaga resmi",
+   "y": "Nama bank atau instansi dipakai supaya pesan terlihat meyakinkan. Nama saja bukan bukti pengirimnya asli.",
+   "a": "Hubungi lembaganya lewat nomor di kartu, aplikasi resmi, atau situs yang kamu ketik sendiri.",
+   "pola": "\\b(?:bank|bca|bri|bni|mandiri|ojk|bpjs|polisi|kepolisian|kejaksaan|kominfo|komdigi|djp|e-?tilang|tilang|pln|pegadaian)\\b",
+   "flags": "gi"
+  },
+  {
+   "k": "money",
+   "w": 25,
+   "t": "Menawarkan uang atau pekerjaan yang terlalu mudah",
+   "y": "Tawaran kerja ringan berpenghasilan besar, atau pinjaman tanpa syarat, biasanya berujung permintaan setoran atau data pribadi.",
+   "a": "Tidak ada pekerjaan sah yang meminta setoran di awal. Cari info perusahaannya sendiri sebelum membalas.",
+   "pola": "\\b(?:kerja\\s+(?:online|paruh\\s+waktu|sampingan|dari\\s+rumah)|part\\s*time|komisi|tugas\\s+(?:like|subscribe|harian)|gaji\\s+(?:harian|\\d)|profit|deposit|investasi|trading|kripto|crypto|passive\\s+income|return\\s+\\d+|modal\\s+kecil|cuan|penghasilan\\s+tambahan|pinjaman\\s+(?:cair|online)|tanpa\\s+jaminan)\\b",
+   "flags": "gi"
+  },
+  {
+   "k": "ask",
+   "w": 25,
+   "t": "Meminta transfer atau pembayaran",
+   "y": "Pola umum penipuan ganti nomor atau biaya tambahan: pesan terlihat dari orang yang kamu kenal lalu meminta uang cepat.",
+   "a": "Telepon nomor lama orang itu untuk memastikan sebelum mentransfer apa pun.",
+   "pola": "\\b(?:nomor\\s+baru|ganti\\s+nomor|no\\s*\\.?\\s*baru|tolong\\s+(?:transfer|kirim)|transfer\\s+(?:dulu|ke)|pinjam\\s+(?:dulu|uang)|top\\s*up|isi\\s+pulsa|beli\\s+voucher|biaya\\s+(?:admin|pengiriman|ongkir|administrasi))\\b",
+   "flags": "gi"
+  },
+  {
+   "k": "click",
+   "w": 10,
+   "t": "Mengajak langsung membuka tautan",
+   "y": "Ajakan klik tanpa penjelasan adalah cara paling umum menggiring korban ke situs palsu.",
+   "a": "Jangan klik tautan dari pengirim yang tidak kamu kenal.",
+   "pola": "\\b(?:klik|ketuk|tap|buka)\\s+(?:link|tautan|tombol|di\\s+sini|disini|berikut)\\b",
+   "flags": "gi"
+  },
+  {
+   "k": "cs",
+   "w": 15,
+   "t": "Mengarahkan ke admin atau customer service lewat chat",
+   "y": "Layanan resmi tidak meminta kamu pindah ke WhatsApp pribadi. CS palsu sering dipakai untuk mengambil alih akun.",
+   "a": "Cari kontak CS dari aplikasi atau situs resmi, bukan dari nomor di pesan.",
+   "pola": "\\b(?:customer\\s+service|layanan\\s+pelanggan|service\\s+center|hubungi\\s+admin|admin\\s+resmi|call\\s+center)\\b|\\bwa\\.me\\S*",
+   "flags": "gi"
+  },
+  {
+   "k": "proof",
+   "w": 25,
+   "t": "Bukti transfer palsu atau mengaku salah kirim",
+   "y": "Penipu mengirim bukti transfer atau resi fiktif, atau mengaku salah mengirim kode, supaya kamu mengembalikan uang atau menyerahkan kode akunmu.",
+   "a": "Cek saldo langsung di aplikasi banking, bukan dari gambar bukti transfer. Jangan teruskan kode apa pun.",
+   "pola": "\\b(?:bukti\\s+(?:transfer|pembayaran)|sudah\\s+transfer|salah\\s+(?:transfer|kirim)|kode\\s+(?:6\\s*digit|whatsapp|wa))\\b",
+   "flags": "gi"
+  },
+  {
+   "k": "donasi",
+   "w": 20,
+   "t": "Meminta donasi",
+   "y": "Donasi palsu marak menjelang akhir tahun dan memanfaatkan rasa simpati atau musibah.",
+   "a": "Salurkan donasi hanya lewat lembaga yang kamu verifikasi sendiri.",
+   "pola": "\\b(?:donasi|sumbangan|galang\\s+dana|bantuan\\s+korban|santunan)\\b",
+   "flags": "gi"
+  },
+  {
+   "k": "data",
+   "w": 30,
+   "t": "Meminta data pribadi",
+   "y": "Foto KTP, selfie, atau NIK dipakai untuk mengajukan pinjaman online atas namamu atau membobol akun.",
+   "a": "Jangan kirim KTP, selfie, atau NIK ke pihak yang tidak kamu verifikasi.",
+   "pola": "\\b(?:foto\\s+ktp|ktp|selfie|nomor\\s+nik|kartu\\s+keluarga|nomor\\s+kartu|data\\s+diri|data\\s+pribadi)\\b",
+   "flags": "gi"
+  },
+  {
+   "k": "mule",
+   "w": 35,
+   "t": "Meminta rekeningmu dipinjam atau disewa",
+   "y": "Rekening yang dipinjamkan dipakai menampung uang hasil penipuan, dan pemilik rekeningnya ikut diperiksa polisi.",
+   "a": "Jangan serahkan rekening, kartu ATM, atau akun m-banking kepada siapa pun.",
+   "pola": "\\b(?:sewa\\s+rekening|jual\\s+rekening|pinjam\\s+rekening)\\b",
+   "flags": "gi"
+  }
+ ]
+}

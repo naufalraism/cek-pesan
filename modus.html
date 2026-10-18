@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Modus penipuan yang dikenali: Cek Pesan</title>
+<meta name="description" content="Daftar modus penipuan online yang dikenali Cek Pesan beserta alasan dan langkah amannya.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Modus penipuan yang dikenali: Cek Pesan">
+<meta property="og:description" content="Daftar modus penipuan online yang dikenali Cek Pesan beserta alasan dan langkah amannya.">
+<meta name="theme-color" content="#14213D">
+<link rel="icon" href="ikon.svg" type="image/svg+xml">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<nav class="top" aria-label="Menu utama"><a class="brand" href="index.html">Cek Pesan</a><a href="index.html">Periksa pesan</a><a href="modus.html" aria-current="page">Modus penipuan</a><a href="cara-kerja.html">Cara kerja</a><a href="privasi.html">Privasi</a><a href="lapor.html">Lapor</a></nav>
+<main class="page">
+<h1>Modus penipuan yang dikenali</h1>
+<p class="lead">Daftar ini dibaca langsung dari pola.json, file yang sama dipakai alat pemeriksa. Diperbarui: <span id="tgl"></span>.</p>
+<div id="daftar"></div>
+<footer>Cek Pesan mencocokkan pola umum, jadi bukan jaminan. Kalau ragu, tanyakan langsung ke pihak yang bersangkutan lewat kontak resminya.</footer>
+</main>
+<script>
+fetch("pola.json").then(function(r){return r.json()}).then(function(d){var o=document.getElementById("daftar");document.getElementById("tgl").textContent=d.diperbarui;d.aturan.forEach(function(r){var s=document.createElement("section");s.innerHTML="<h2></h2><p></p><p></p>";var p=s.querySelectorAll("h2,p");p[0].textContent=r.t;p[1].textContent=r.y;p[2].textContent="Yang sebaiknya kamu lakukan: "+r.a;o.appendChild(s)})}).catch(function(){document.getElementById("daftar").textContent="Daftar gagal dimuat. Buka situs lewat hosting atau server lokal, bukan langsung dari file."});
+</script>
+</body>
+</html>
