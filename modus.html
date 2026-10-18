@@ -8,11 +8,12 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Modus penipuan yang dikenali: Cek Pesan">
 <meta property="og:description" content="Daftar modus penipuan online yang dikenali Cek Pesan beserta alasan dan langkah amannya.">
+<meta name="color-scheme" content="light">
 <meta name="theme-color" content="#0B6E8A">
 <link rel="icon" href="ikon.svg" type="image/svg+xml">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style.css?v=2">
 </head>
 <body>
 <nav class="top" aria-label="Menu utama"><a class="brand" href="index.html">Cek Pesan</a><a href="index.html">Periksa pesan</a><a href="modus.html" aria-current="page">Modus penipuan</a><a href="cara-kerja.html">Cara kerja</a><a href="privasi.html">Privasi</a><a href="lapor.html">Lapor</a><button class="ukuran" id="ukuran" type="button" aria-pressed="false">Huruf besar</button></nav>
@@ -25,6 +26,6 @@
 <script>
 fetch("pola.json").then(function(r){return r.json()}).then(function(d){var o=document.getElementById("daftar");document.getElementById("tgl").textContent=d.diperbarui;d.aturan.forEach(function(r){var s=document.createElement("section");s.innerHTML="<h2></h2><p></p><p></p>";var p=s.querySelectorAll("h2,p");p[0].textContent=r.t;p[1].textContent=r.y;p[2].textContent="Yang sebaiknya kamu lakukan: "+r.a;o.appendChild(s)})}).catch(function(){document.getElementById("daftar").textContent="Daftar gagal dimuat. Buka situs lewat hosting atau server lokal, bukan langsung dari file."});
 </script>
-<script src="js/umum.js"></script>
+<script src="js/umum.js?v=2"></script>
 </body>
 </html>
