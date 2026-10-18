@@ -8,14 +8,14 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Cara kerja Cek Pesan">
 <meta property="og:description" content="Bagaimana Cek Pesan menilai pesan mencurigakan, cara membaca skor, dan batasannya.">
-<meta name="theme-color" content="#14213D">
+<meta name="theme-color" content="#0B6E8A">
 <link rel="icon" href="ikon.svg" type="image/svg+xml">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<nav class="top" aria-label="Menu utama"><a class="brand" href="index.html">Cek Pesan</a><a href="index.html">Periksa pesan</a><a href="modus.html">Modus penipuan</a><a href="cara-kerja.html" aria-current="page">Cara kerja</a><a href="privasi.html">Privasi</a><a href="lapor.html">Lapor</a></nav>
+<nav class="top" aria-label="Menu utama"><a class="brand" href="index.html">Cek Pesan</a><a href="index.html">Periksa pesan</a><a href="modus.html">Modus penipuan</a><a href="cara-kerja.html" aria-current="page">Cara kerja</a><a href="privasi.html">Privasi</a><a href="lapor.html">Lapor</a><button class="ukuran" id="ukuran" type="button" aria-pressed="false">Huruf besar</button></nav>
 <main class="page">
 <h1>Cara kerja Cek Pesan</h1>
 <p class="lead">Cek Pesan mencocokkan isi pesan dengan daftar pola penipuan yang sering dilaporkan, lalu menjumlahkan bobotnya menjadi skor kecurigaan dari 0 sampai 100.</p>
@@ -24,7 +24,9 @@
 <li>Tautan: alamat yang disingkat dan akhiran situs yang sering dipakai penipu.</li>
 <li>File APK dan ajakan memasang aplikasi dari chat.</li>
 <li>Nomor telepon dan nomor rekening yang ada di dalam pesan.</li>
-<li>Huruf yang disamarkan, misalnya angka pengganti huruf atau huruf dari alfabet lain.</li></ul></section>
+<li>Huruf yang disamarkan, misalnya angka pengganti huruf atau huruf dari alfabet lain.</li>
+<li>Struktur tautan: alamat IP, tanda @, huruf disamarkan, dan nama bank atau kurir yang dipakai di alamat yang bukan miliknya. Tautan tidak dibuka.</li>
+<li>Tangkapan layar chat, dibaca dengan pengenal teks (OCR) di browser lalu diperiksa seperti pesan biasa.</li></ul></section>
 <section><h2>Cara membaca skor</h2><ul>
 <li>0: tidak ada pola yang dikenali. Ini bukan jaminan aman.</li>
 <li>1 sampai 19: ada sedikit tanda yang perlu diperhatikan.</li>
@@ -35,5 +37,6 @@
 <footer>Cek Pesan mencocokkan pola umum, jadi bukan jaminan. Kalau ragu, tanyakan langsung ke pihak yang bersangkutan lewat kontak resminya.</footer>
 </main>
 
+<script src="js/umum.js"></script>
 </body>
 </html>

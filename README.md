@@ -27,3 +27,7 @@ Salin satu objek di `pola.json`, ubah `pola` (ekspresi reguler JavaScript), `fla
 - Gambar pratinjau saat tautan dibagikan (perlu `og:image` PNG dengan alamat penuh setelah domain jadi)
 - Service worker, jadi belum bisa dipakai tanpa internet
 - Font masih dari Google Fonts; untuk privasi penuh, unduh dan simpan sendiri di repo
+
+## Fitur gambar dan tautan
+- Tangkapan layar dibaca dengan Tesseract.js (OCR) langsung di browser. Mesinnya diunduh dari jsDelivr saat pertama dipakai. Hasil baca bisa salah, jadi teksnya tetap bisa diedit sebelum diperiksa.
+- Tautan hanya dianalisis bentuknya (IP, @, huruf disamarkan, nama merek di domain yang salah). Daftar alamat resmi ada di `BRAND` dalam `js/app.js`, tambahkan di sana.

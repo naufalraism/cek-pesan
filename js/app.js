@@ -15,11 +15,23 @@ function leet(s){var m={"0":"o","1":"i","3":"e","4":"a","5":"s","7":"t","@":"a",
 function esc(s){return s.replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
 function find(re,text){var r=[],m;re.lastIndex=0;while((m=re.exec(text))){if(m[0].length===0){re.lastIndex++;continue}r.push([m.index,m.index+m[0].length])}return r}
 function merge(rs){rs.sort(function(a,b){return a[0]-b[0]});var o=[];rs.forEach(function(r){var l=o[o.length-1];if(l&&r[0]<=l[1]){l[1]=Math.max(l[1],r[1])}else{o.push([r[0],r[1]])}});return o}
+var BRAND={bca:["bca.co.id"],bri:["bri.co.id"],bni:["bni.co.id"],mandiri:["bankmandiri.co.id","mandiri.co.id"],jne:["jne.co.id"],sicepat:["sicepat.com"],anteraja:["anteraja.id"],shopee:["shopee.co.id","shopee.com"],tokopedia:["tokopedia.com"],dana:["dana.id"],ovo:["ovo.id"],pln:["pln.co.id"],whatsapp:["whatsapp.com"],bpjs:["bpjs-kesehatan.go.id","bpjsketenagakerjaan.go.id"],ojk:["ojk.go.id"]};
+function urlFlags(u){
+  var h,o=[];
+  try{var x=new URL(/^https?:\/\//i.test(u)?u:"http://"+u);h=x.hostname.toLowerCase();if(x.username||x.password)o.push({k:"u_at",w:30,t:"Tautan memakai tanda @ untuk menyamarkan tujuan",y:"Bagian sebelum tanda @ hanya tampilan. Tujuan sebenarnya ada setelahnya ("+h+").",a:"Jangan klik tautan ini."})}catch(e){return o}
+  if(/^\d{1,3}(\.\d{1,3}){3}$/.test(h))o.push({k:"u_ip",w:30,t:"Tautan langsung ke alamat IP",y:"Situs resmi memakai nama domain, bukan deretan angka ("+h+").",a:"Jangan klik tautan ini."});
+  if(h.indexOf("xn--")>-1)o.push({k:"u_puny",w:30,t:"Alamat situs memakai huruf yang disamarkan",y:"Bagian xn-- menandakan huruf non-Latin yang bisa tampak seperti huruf biasa ("+h+").",a:"Ketik sendiri alamat situs resminya, jangan lewat tautan."});
+  if((h.match(/-/g)||[]).length>=3||h.split(".").length>=5)o.push({k:"u_long",w:10,t:"Alamat situs panjang dan berbelit",y:"Banyak tanda hubung atau tingkatan subdomain sering dipakai untuk meniru situs resmi ("+h+").",a:"Periksa alamat lengkapnya dengan teliti sebelum membuka."});
+  var tk=h.split(/[.-]/);
+  Object.keys(BRAND).some(function(b){if(tk.indexOf(b)>-1&&!BRAND[b].some(function(d){return h===d||h.slice(-d.length-1)==="."+d})){o.push({k:"u_brand",w:35,t:"Memakai nama "+b.toUpperCase()+" tetapi bukan alamat resminya",y:"Alamat "+h+" memuat nama "+b+", padahal alamat resmi yang kami kenal adalah "+BRAND[b][0]+".",a:"Buka situs atau aplikasi resminya dengan mengetik alamatnya sendiri."});return true}});
+  return o}
 function analyze(text,disg){
   var hits=[],ranges=[],score=0,lt=leet(text);
   RULES.forEach(function(r){var f=find(r.re,text).concat(find(r.re,lt));if(f.length){hits.push(r);score+=r.w;ranges=ranges.concat(f)}});
   if(disg){score+=10;hits.push({k:"disg",w:10,t:"Memakai huruf atau karakter yang disamarkan",y:"Pesan memuat huruf kembar dari alfabet lain atau karakter tak terlihat, biasanya untuk mengelabui filter spam.",a:"Perlakukan pesan ini dengan ekstra hati-hati."})}
   var links=(text.match(LINK)||[]);var PH=/(?:\+62|\b62|\b0)8\d[\d\s-]{7,12}\d/g;var phones=(text.match(PH)||[]).map(function(s){return s.replace(/[\s-]+/g,"")});var t2=text.replace(PH," "),accts=(t2.match(/\b\d{10,16}\b/g)||[]).concat((t2.match(/\b\d{3,5}(?:[ -]\d{3,5}){1,4}\b/g)||[]).filter(function(s){var n=s.replace(/\D/g,"").length;return n>=10&&n<=16}));
+  var cl=links.map(function(l){return l.replace(/[.,;)]+$/,"")}),seen={};
+  cl.forEach(function(l){urlFlags(l).forEach(function(f){var i=text.indexOf(l);if(i>-1)ranges.push([i,i+l.length]);if(!seen[f.k]){seen[f.k]=1;score+=f.w;hits.push(f)}})});
   var keys=hits.map(function(h){return h.k});
   var hasLink=links.length>0||keys.indexOf("apk")>-1;
   var bait=["urg","gift","pkg","org","otp"].some(function(k){return keys.indexOf(k)>-1});
@@ -66,3 +78,17 @@ function copy(){
 $("go").onclick=run;
 $("clr").onclick=function(){$("in").value="";$("out").innerHTML="";$("in").focus()};
 Array.prototype.forEach.call(document.querySelectorAll(".ex"),function(b){b.onclick=function(){$("in").value=EX[+b.getAttribute("data-ex")];run()}});
+
+var TJS="https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js",tp=null;
+function muatTess(){if(tp)return tp;tp=new Promise(function(ok,no){if(window.Tesseract)return ok();var s=document.createElement("script");s.src=TJS;s.onload=ok;s.onerror=function(){tp=null;no(new Error("muat"))};document.head.appendChild(s)});return tp}
+function siapkan(file){return new Promise(function(ok,no){var im=new Image(),u=URL.createObjectURL(file);im.onload=function(){var k=im.width<1400?1400/im.width:1,c=document.createElement("canvas");c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);var x=c.getContext("2d");x.drawImage(im,0,0,c.width,c.height);var d=x.getImageData(0,0,c.width,c.height),p=d.data,sum=0,i,g;for(i=0;i<p.length;i+=4){g=.299*p[i]+.587*p[i+1]+.114*p[i+2];p[i]=p[i+1]=p[i+2]=g;sum+=g}if(sum/(p.length/4)<110){for(i=0;i<p.length;i+=4){p[i]=p[i+1]=p[i+2]=255-p[i]}}x.putImageData(d,0,0);URL.revokeObjectURL(u);c.toBlob(function(b){b?ok(b):no(new Error("gambar"))},"image/png")};im.onerror=function(){no(new Error("gambar"))};im.src=u})}
+function bacaGambar(file){
+  if(!file||!/^image\//.test(file.type))return;
+  var st=$("st");st.textContent="Menyiapkan pembaca gambar...";
+  siapkan(file).then(function(b){return muatTess().then(function(){return window.Tesseract.recognize(b,"ind",{logger:function(m){if(m.status==="recognizing text")st.textContent="Membaca gambar: "+Math.round(m.progress*100)+"%"}})})}).then(function(r){var t=r.data.text.replace(/\n{3,}/g,"\n\n").trim();if(!t){st.textContent="Tidak ada teks yang terbaca. Coba gambar yang lebih jelas atau ketik pesannya.";return}$("in").value=t;st.textContent="Teks dari gambar sudah ditempel di kotak. Periksa dan perbaiki bila ada huruf yang salah baca.";run()}).catch(function(){st.textContent="Gambar gagal dibaca. Periksa koneksi internet, lalu coba lagi atau ketik pesannya."})
+}
+$("img").onclick=function(){$("file").click()};
+$("file").onchange=function(){bacaGambar(this.files[0]);this.value=""};
+document.addEventListener("paste",function(e){var fs=e.clipboardData&&e.clipboardData.files;if(fs&&fs.length&&/^image\//.test(fs[0].type)){e.preventDefault();bacaGambar(fs[0])}});
+$("in").addEventListener("dragover",function(e){e.preventDefault()});
+$("in").addEventListener("drop",function(e){var f=e.dataTransfer&&e.dataTransfer.files[0];if(f&&/^image\//.test(f.type)){e.preventDefault();bacaGambar(f)}});
